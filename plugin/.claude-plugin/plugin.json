@@ -1,9 +1,15 @@
 {
   "name": "gauntlet",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Drive Claude Code from a Wear OS watch: gestures arrive as keystrokes, and your wrist buzzes when Claude finishes or needs you.",
   "author": {
     "name": "Nawaf Sheikh"
   },
-  "keywords": ["wear-os", "watch", "gestures", "haptics", "accessibility"]
+  "keywords": [
+    "wear-os",
+    "watch",
+    "gestures",
+    "haptics",
+    "accessibility"
+  ]
 }

@@ -13,8 +13,11 @@ function Say($text, $color = 'Gray') { Write-Host $text -ForegroundColor $color 
 function Add-ToClaude {
     if (-not (Get-Command claude -ErrorAction SilentlyContinue)) { return $false }
     Say 'Claude Code found: adding the Gauntlet plugin...'
-    claude plugin marketplace add $Repo | Out-Null
-    claude plugin install gauntlet@gauntlet | Out-Null
+    claude plugin marketplace add $Repo 2>$null | Out-Null
+    # An earlier install is brought up to date; a new one is installed.
+    claude plugin marketplace update gauntlet 2>$null | Out-Null
+    claude plugin install gauntlet@gauntlet 2>$null | Out-Null
+    claude plugin update gauntlet@gauntlet 2>$null | Out-Null
     return $true
 }
 

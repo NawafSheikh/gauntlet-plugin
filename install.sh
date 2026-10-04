@@ -12,8 +12,11 @@ added=""
 
 if command -v claude >/dev/null 2>&1; then
   echo "Claude Code found: adding the Gauntlet plugin..."
-  claude plugin marketplace add "$REPO" >/dev/null
-  claude plugin install gauntlet@gauntlet >/dev/null
+  claude plugin marketplace add "$REPO" >/dev/null 2>&1 || true
+  # An earlier install is brought up to date; a new one is installed.
+  claude plugin marketplace update gauntlet >/dev/null 2>&1 || true
+  claude plugin install gauntlet@gauntlet >/dev/null 2>&1 || true
+  claude plugin update gauntlet@gauntlet >/dev/null 2>&1 || true
   added="Claude Code"
 fi
 if command -v codex >/dev/null 2>&1; then

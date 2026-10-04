@@ -4,30 +4,78 @@
     "SessionStart": [
       {
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          }
         ]
       }
     ],
     "UserPromptSubmit": [
       {
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true },
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["context", "claude"] }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "context",
+              "claude"
+            ]
+          }
         ]
       }
     ],
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true },
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["inbox", "claude"], "asyncRewake": true, "timeout": 86400 }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "inbox",
+              "claude"
+            ],
+            "asyncRewake": true,
+            "timeout": 86400
+          }
         ]
       }
     ],
     "SessionEnd": [
       {
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          }
         ]
       }
     ],
@@ -35,35 +83,89 @@
       {
         "matcher": "AskUserQuestion",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          }
+        ]
+      },
+      {
+        "matcher": "Task|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          }
         ]
       }
     ],
     "PermissionRequest": [
       {
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["permission", "claude"], "timeout": 660, "statusMessage": "Gauntlet: asking your watch while you are away (use the keyboard or mouse to answer here)" }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "permission",
+              "claude"
+            ],
+            "timeout": 660,
+            "statusMessage": "Gauntlet: asking your watch while you are away (use the keyboard or mouse to answer here)"
+          }
         ]
       }
     ],
     "PostToolBatch": [
       {
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["brake", "claude"], "timeout": 5 }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "brake",
+              "claude"
+            ],
+            "timeout": 5
+          }
         ]
       }
     ],
     "PreModelSwitch": [
       {
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["modelswitch", "claude"] }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "modelswitch",
+              "claude"
+            ]
+          }
         ]
       }
     ],
     "PostModelSwitch": [
       {
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          }
         ]
       }
     ],
@@ -71,7 +173,30 @@
       {
         "matcher": "permission_prompt|elicitation_dialog|agent_needs_input",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet",
+            "args": [
+              "hook",
+              "claude"
+            ],
+            "async": true
+          }
         ]
       }
     ]
