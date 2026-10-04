@@ -1,6 +1,6 @@
 ---
 description: Change how Gauntlet looks on your phone and watch (widget, wallpaper, watch face) by describing it
-argument-hint: what you want, e.g. "calmer, darker wallpaper" or "transparent widget"
+argument-hint: "what you want, for example a calmer darker wallpaper or a transparent widget"
 allowed-tools: Bash(*native/gauntlet*)
 ---
 

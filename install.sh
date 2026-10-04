@@ -22,6 +22,12 @@ if command -v codex >/dev/null 2>&1; then
   codex plugin add gauntlet@gauntlet >/dev/null
   added="${added:+$added, }Codex"
 fi
+if command -v opencode >/dev/null 2>&1; then
+  echo "OpenCode found: adding the Gauntlet plugin..."
+  mkdir -p "$HOME/.config/opencode/plugins"
+  curl -fsSL "https://raw.githubusercontent.com/$REPO/main/plugin/opencode/gauntlet.js" -o "$HOME/.config/opencode/plugins/gauntlet.js"
+  added="${added:+$added, }OpenCode"
+fi
 if [ -z "$added" ]; then
   echo "No supported AI agent found. Install Claude Code (https://claude.com/claude-code) or Codex first, then run this again."
   exit 1
@@ -33,7 +39,9 @@ launcher=$(ls -t "$HOME"/.claude/plugins/cache/gauntlet/gauntlet/*/native/gauntl
 if [ -n "$launcher" ]; then
   # Start it now rather than at the next session, so the phone finds this computer right away.
   nohup "$launcher" serve >/dev/null 2>&1 &
-  echo "The Gauntlet agent is running."
+  "$launcher" autostart on >/dev/null 2>&1 || true
+  if command -v agy >/dev/null 2>&1; then "$launcher" agy install >/dev/null 2>&1 && echo "Antigravity found: its sessions show too."; fi
+  echo "The Gauntlet agent is running, and starts again when you log in."
 else
   echo "The agent starts with your next Claude Code or Codex session."
 fi

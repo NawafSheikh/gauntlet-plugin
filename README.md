@@ -1,7 +1,7 @@
 # Gauntlet
 
 See, approve and talk to your AI coding agents from your phone and watch.
-Works with Claude Code and Codex on Windows, macOS and Linux. No account,
+Works with Claude Code, Codex, OpenCode and Antigravity on Windows, macOS and Linux. No account,
 no servers: your phone and watch talk only to your own computers.
 
 ## Install (one line)
@@ -21,6 +21,15 @@ curl -fsSL https://raw.githubusercontent.com/NawafSheikh/gauntlet-plugin/main/in
 Then open the Gauntlet app on your phone or watch on the same Wi-Fi. Your
 computer opens a page in its browser: check the code matches and click
 **Allow**. That's it.
+
+## If your phone cannot find the computer
+
+- Same Wi-Fi? Both must be on the same network (or your own Tailscale network).
+- Windows on a network marked **Public** blocks incoming connections: set the
+  network to **Private** (Settings > Network > Wi-Fi), or allow Gauntlet when
+  Windows asks. Company-managed laptops may not allow either.
+- New folder in Claude Code? Accept its "trust this folder" prompt first;
+  Claude runs no plugin hooks before that.
 
 ## Or install by hand
 

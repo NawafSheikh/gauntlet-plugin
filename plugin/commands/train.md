@@ -1,6 +1,6 @@
 ---
-description: Teach or tune a watch gesture with Claude: record samples on the watch, measure them, and improve detection
-argument-hint: the gesture, e.g. "snap" or "my pinch is missed"
+description: "Teach or tune a watch gesture with Claude. Record samples on the watch, measure them, and improve detection."
+argument-hint: "the gesture, for example snap, or my pinch is missed"
 allowed-tools: Bash(*native/gauntlet*)
 ---
 
