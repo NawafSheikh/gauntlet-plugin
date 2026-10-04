@@ -1,7 +1,7 @@
 ---
-description: Change how Gauntlet looks on your phone and watch (widget, wallpaper, watch face) by describing it
-argument-hint: "what you want, for example a calmer darker wallpaper or a transparent widget"
-allowed-tools: Bash(*native/gauntlet*)
+description: Design your own phone wallpaper with live session controls, or tweak the look, by describing it
+argument-hint: "what you want, for example a rainy neon city with my sessions as glowing signs"
+allowed-tools: Bash(*native/gauntlet*), Read, Write
 ---
 
 The user wants to change how Gauntlet looks. They said: `$ARGUMENTS`
@@ -9,22 +9,35 @@ The user wants to change how Gauntlet looks. They said: `$ARGUMENTS`
 The agent's launcher is `${CLAUDE_PLUGIN_ROOT}/native/gauntlet` (on Windows
 in PowerShell: `& "${CLAUDE_PLUGIN_ROOT}/native/gauntlet.exe"`).
 
-1. Run `"${CLAUDE_PLUGIN_ROOT}/native/gauntlet" customise list` to see every
-   setting and its allowed values. Use only those; never invent a setting.
-2. Map what the user asked for onto those settings, for example:
-   - "darker", "dimmer", "less bright" wallpaper -> `wallpaper.brightness dim`
-   - "brighter" -> `wallpaper.brightness bright`
-   - "calmer", "less movement", "save battery" -> `wallpaper.motion calm`
-   - "more alive", "more animation" -> `wallpaper.motion lively`
-   - "see-through", "transparent" widget -> `widget.background transparent`
-3. Run one command per setting, exactly:
-   `"${CLAUDE_PLUGIN_ROOT}/native/gauntlet" customise <setting> <value>`
-   Never put the user's own words into the command; only a listed setting
-   and one of its listed values.
-4. Watch face colours and layout are changed on the watch itself: long-press
-   the Clawd face, tap Customize, and pick a colour. Say so when the user
-   asks about the watch face.
-5. If nothing matches, show the user the list and ask which they want.
+## Designing the wallpaper (most requests)
 
-Reply in one or two sentences: what changed, and that the phone shows it at
-once (the widget on its next refresh).
+The phone's live wallpaper can be anything the user describes: a **skin**,
+one JSON file of layers (shapes, gradients, text, pictures, the Clawd and
+Codex characters, rain, snow, stars) bound to live session data, with
+controls the user can tap (next session, talk, OK, open).
+
+1. Read the format first: `${CLAUDE_PLUGIN_ROOT}/skills/gauntlet/skins.md`.
+   Use only the fields, words and data keys it lists.
+2. Design for the user's request. Make it beautiful: a clear focal point,
+   a restrained palette, generous space, text that stays readable over the
+   background, and at least one live control (the session name with
+   `"tap": "next"`, and a talk button) unless they ask for none.
+3. Write it to a file in the current folder, for example `gauntlet-skin.json`.
+4. Apply it: `"${CLAUDE_PLUGIN_ROOT}/native/gauntlet" skin apply gauntlet-skin.json`.
+   If it is refused, the message says what to fix; fix it and apply again.
+5. It prints the path of the picture the phone drew. **Read that picture**,
+   compare it with what the user asked for, and refine (spacing, contrast,
+   sizes, colours) until it looks right; two or three rounds is normal.
+6. Pictures: if the user gives an image (or you make one, as a PNG or
+   JPEG of at most 160 KB), send it with
+   `"${CLAUDE_PLUGIN_ROOT}/native/gauntlet" skin asset <name> <file>` and
+   use it as an `image` layer or the background.
+7. Tell the user it is on their phone, and that `skin off` brings back the
+   built-in wallpaper.
+
+## Small tweaks
+
+For "dimmer", "calmer" or "transparent widget", the older settings still
+work: run `"${CLAUDE_PLUGIN_ROOT}/native/gauntlet" customise list`, then
+`customise <setting> <value>` with only a listed setting and value. Never
+put the user's own words into a command.
