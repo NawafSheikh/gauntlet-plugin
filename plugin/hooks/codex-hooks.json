@@ -1,0 +1,65 @@
+{
+  "description": "Codex hooks for Gauntlet (Codex reads this file through .codex-plugin/plugin.json; Claude Code reads hooks.json). Each event is told to the local Gauntlet agent so the watch lists the Codex session, buzzes when a turn ends or asks for permission, and, while you are away from the PC with a watch connected, a permission waits up to 2 minutes for Allow or Deny from the watch and a finished turn waits up to 2 minutes for a reply from the watch, which Codex runs as the next prompt. Codex substitutes ${PLUGIN_ROOT} in the command; it runs through $SHELL -lc, or cmd.exe /C on Windows (commandWindows). Codex skips these until you trust them in /hooks, and again after they change.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/native/gauntlet\" hook codex",
+            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" hook codex",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/native/gauntlet\" hook codex",
+            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" hook codex",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/native/gauntlet\" permission codex",
+            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" permission codex",
+            "timeout": 660
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/native/gauntlet\" stop codex",
+            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" stop codex",
+            "timeout": 180
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${PLUGIN_ROOT}/native/gauntlet\" hook codex",
+            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" hook codex",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}

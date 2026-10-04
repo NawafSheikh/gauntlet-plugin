@@ -1,0 +1,19 @@
+{
+  "name": "gauntlet",
+  "version": "0.1.0",
+  "description": "Drive Codex from a Wear OS watch: your wrist buzzes when a turn ends or Codex asks for permission.",
+  "keywords": [
+    "wear-os",
+    "watch",
+    "gestures",
+    "haptics",
+    "accessibility"
+  ],
+  "hooks": "./hooks/codex-hooks.json",
+  "interface": {
+    "displayName": "Gauntlet",
+    "shortDescription": "Wrist buzzes for Codex from the Gauntlet watch app",
+    "developerName": "Nawaf Sheikh",
+    "category": "Productivity"
+  }
+}

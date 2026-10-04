@@ -1,0 +1,5 @@
+# The launcher is a POSIX sh script: a CRLF checkout breaks its #! line.
+native/gauntlet text eol=lf
+# Builds are binaries: never convert them.
+native/*.exe binary
+native/*/gauntlet-agent binary

@@ -1,0 +1,16 @@
+{
+  "name": "gauntlet",
+  "owner": {
+    "name": "Nawaf Sheikh"
+  },
+  "metadata": {
+    "description": "Gauntlet: control Claude Code from a Wear OS watch."
+  },
+  "plugins": [
+    {
+      "name": "gauntlet",
+      "source": "./plugin",
+      "description": "Wrist buzzes, watch approvals and replies, and the gesture map for driving Claude Code from the Gauntlet watch app. Windows, macOS, and Linux."
+    }
+  ]
+}

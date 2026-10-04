@@ -1,0 +1,79 @@
+{
+  "description": "Tell the local Gauntlet agent about session starts, prompts, finishes, questions, permission requests, waits, model switches, and ends, with each session's permission mode, model, and effort, so the watch and phone show the right session, what it asks, and buzz at the right time. The agent starts itself on the first SessionStart. On a prompt spoken while pointing, explain its [n] marks to Claude. A model switch asked for on the watch skips the warm-cache confirmation. While you are away from the PC (no keyboard or mouse for 10 s) and a watch is connected, a permission waits up to 2 minutes for Allow or Deny from the watch, and a finished turn waits up to 2 minutes for a reply from the watch, which continues it; touching the PC ends the wait at once. After every turn a background hook waits for words from the watch and wakes the idle session with them (asyncRewake), so prompts and skills from the watch reach any session, in any terminal or in Claude Desktop, with no keystrokes. A stop from the watch that no keys can deliver ends the turn at its next tool step (PostToolBatch).",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true },
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["context", "claude"] }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true },
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["inbox", "claude"], "asyncRewake": true, "timeout": 86400 }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["permission", "claude"], "timeout": 660, "statusMessage": "Gauntlet: asking your watch while you are away (use the keyboard or mouse to answer here)" }
+        ]
+      }
+    ],
+    "PostToolBatch": [
+      {
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["brake", "claude"], "timeout": 5 }
+        ]
+      }
+    ],
+    "PreModelSwitch": [
+      {
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["modelswitch", "claude"] }
+        ]
+      }
+    ],
+    "PostModelSwitch": [
+      {
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt|elicitation_dialog|agent_needs_input",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_ROOT}/native/gauntlet", "args": ["hook", "claude"], "async": true }
+        ]
+      }
+    ]
+  }
+}

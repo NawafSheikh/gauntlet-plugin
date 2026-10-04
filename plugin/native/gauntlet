@@ -1,0 +1,39 @@
+#!/bin/sh
+# Gauntlet launcher: runs the gauntlet-agent build for this OS and CPU.
+#
+# Claude Code runs hooks in exec form, so on Windows the extensionless path
+# ${CLAUDE_PLUGIN_ROOT}/native/gauntlet resolves to gauntlet.exe next to this
+# file and this script never runs. macOS and Linux run it directly; Git Bash
+# on Windows (a shell running this path by hand) runs it too.
+#
+# It never fails a hook: with no build for this machine it says so on stderr
+# and exits 0, so Claude Code goes on as if the plugin were not there.
+dir=$(dirname "$0")
+
+case "$(uname -s)" in
+  Darwin) os=darwin ;;
+  Linux) os=linux ;;
+  MINGW* | MSYS* | CYGWIN*) exec "$dir/gauntlet.exe" "$@" ;;
+  *)
+    echo "gauntlet: no build for $(uname -s); see the plugin README" >&2
+    exit 0
+    ;;
+esac
+
+case "$(uname -m)" in
+  x86_64 | amd64) arch=amd64 ;;
+  arm64 | aarch64) arch=arm64 ;;
+  *)
+    echo "gauntlet: no build for $(uname -m) on $os; see the plugin README" >&2
+    exit 0
+    ;;
+esac
+
+bin="$dir/$os-$arch/gauntlet-agent"
+if [ ! -f "$bin" ]; then
+  echo "gauntlet: missing $bin; reinstall the plugin" >&2
+  exit 0
+fi
+# A copy that lost its executable bit (an archive, a plain file copy) still runs.
+[ -x "$bin" ] || chmod +x "$bin" 2>/dev/null
+exec "$bin" "$@"
