@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gauntlet Guide</title>
+<meta name="description" content="See, approve and talk to your AI coding agents from your Galaxy Watch and Android phone. Setup guide and what every button does.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5/400.css">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+<style>
+  :root {
+    --bg: #0d0d0c; --bg-2: #161614; --line: #2a2926; --text: #f1efe9; --dim: #a19f97; --accent: #d77757; --accent-ink: #1b0f0a;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f4f4f2; --bg-2: #ffffff; --line: #dedcd6; --text: #171715; --dim: #5e5c56; --accent: #b55636; --accent-ink: #ffffff; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.6 "Geist Sans", system-ui, sans-serif; }
+  code, pre { font-family: "Geist Mono", ui-monospace, monospace; }
+  a { color: inherit; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+  nav { height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  nav .brand { font-weight: 600; letter-spacing: -0.01em; text-decoration: none; }
+  nav .links { display: flex; gap: 22px; font-size: 15px; color: var(--dim); }
+  nav .links a { text-decoration: none; }
+  nav .links a:hover { color: var(--text); }
+  h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 18px; font-weight: 600; }
+  h2 { font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; font-weight: 600; }
+  h3 { font-size: 19px; margin: 0 0 6px; font-weight: 600; }
+  p { margin: 0 0 14px; color: var(--dim); max-width: 62ch; }
+  section { padding: 88px 0; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); white-space: nowrap; transition: transform .15s ease; }
+  .btn:active { transform: translateY(1px) scale(.98); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding: 40px 0 72px; min-height: min(calc(100dvh - 64px), 820px); }
+  .hero .ctas { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+  .watch { position: relative; width: min(420px, 100%); margin-left: auto; aspect-ratio: 1; border-radius: 50%; background: #000; box-shadow: 0 0 0 10px #1f1f1d, 0 0 0 11px #34332f, 0 40px 90px rgb(0 0 0 / .45); }
+  .watch img { width: 100%; height: 100%; border-radius: 50%; display: block; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 34px; border-top: 1px solid var(--line); }
+  .step { padding: 26px 26px 26px 0; }
+  .step + .step { padding-left: 26px; border-left: 1px solid var(--line); }
+  .step i { font-size: 28px; color: var(--accent); }
+  .cmd { margin-top: 12px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; display: flex; gap: 10px; align-items: flex-start; }
+  .cmd code { flex: 1; overflow-wrap: anywhere; }
+  .cmd button { background: none; border: 1px solid var(--line); color: var(--text); border-radius: 999px; padding: 4px 10px; cursor: pointer; font: inherit; font-size: 12px; }
+  .tabs { display: flex; gap: 6px; margin-top: 10px; }
+  .tabs button { background: none; border: 1px solid var(--line); color: var(--dim); border-radius: 999px; padding: 4px 12px; cursor: pointer; font: inherit; font-size: 13px; }
+  .tabs button[aria-selected="true"] { color: var(--text); border-color: var(--accent); }
+
+  .annot { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+  .annot .watch { margin: 0 auto; }
+  .pin { position: absolute; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 600 14px/28px "Geist Sans", sans-serif; text-align: center; transform: translate(-50%, -50%); box-shadow: 0 0 0 3px #000; }
+  .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; counter-reset: n; }
+  .legend > div { display: grid; grid-template-columns: 30px 1fr; gap: 10px; }
+  .legend b { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 13px; }
+  .legend h3 { font-size: 16px; }
+  .legend p { font-size: 15px; margin: 0; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; max-width: 760px; }
+  .cards figure { margin: 0; }
+  .cards img { width: 100%; border-radius: var(--radius); border: 1px solid var(--line); display: block; }
+  figcaption { color: var(--dim); font-size: 14px; margin-top: 10px; }
+
+  .bento { display: grid; grid-template-columns: 1.3fr .7fr .7fr; grid-template-rows: auto auto; gap: 18px; margin-top: 30px; }
+  .tile { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+  .tile .copy { padding: 20px 22px; }
+  .tile .copy p { font-size: 15px; margin: 0; }
+  .tile img { width: 100%; display: block; object-fit: cover; }
+  .tile.face { grid-row: span 2; }
+  .tile.face img { background: #000; padding: 26px; aspect-ratio: 1; object-fit: contain; }
+  .tile.paper img { height: 330px; object-position: center 58%; }
+
+  .commands { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; margin-top: 26px; }
+  .commands > div { padding: 18px 0; border-top: 1px solid var(--line); }
+  .commands code { color: var(--accent); font-size: 15px; }
+  .commands p { font-size: 15px; margin: 6px 0 0; }
+
+  .privacy { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 36px; }
+  .privacy i { font-size: 42px; color: var(--accent); }
+
+  details { border-top: 1px solid var(--line); padding: 16px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::after { content: "+"; color: var(--dim); }
+  details[open] summary::after { content: "-"; }
+  details p { margin-top: 10px; }
+
+  footer { padding: 48px 0 64px; color: var(--dim); font-size: 14px; border-top: 1px solid var(--line); }
+  footer p { font-size: 14px; }
+
+  @media (max-width: 860px) {
+    nav .links { display: none; }
+    .hero, .annot, .cards { grid-template-columns: 1fr; }
+    .hero { min-height: 0; }
+    .watch { margin: 0 auto; }
+    .steps { grid-template-columns: 1fr; }
+    .step, .step + .step { padding: 22px 0; border-left: 0; }
+    .step + .step { border-top: 1px solid var(--line); }
+    .legend, .commands { grid-template-columns: 1fr; }
+    .bento { grid-template-columns: 1fr; }
+    .tile.face { grid-row: auto; }
+    .privacy { grid-template-columns: 1fr; padding: 24px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#">Gauntlet</a>
+    <div class="links"><a href="#setup">Setup</a><a href="#watch">The watch</a><a href="#cards">Answering</a><a href="#commands">Commands</a><a href="#faq">FAQ</a></div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Your AI coding agents, on your wrist.</h1>
+      <p>See which session needs you, approve what it asks, and talk back from your Galaxy Watch or Android phone.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#setup"><i class="ph ph-download-simple"></i>Install</a>
+        <a class="btn" href="https://github.com/NawafSheikh/gauntlet-plugin"><i class="ph ph-github-logo"></i>GitHub</a>
+      </div>
+    </div>
+    <div class="watch"><img src="img/watch-console.png" alt="The Gauntlet watch console showing a working Claude Code session with Up, OK, Down, Talk, Switch and Pause buttons" width="432" height="432"></div>
+  </header>
+</div>
+
+<section id="setup"><div class="wrap">
+  <h2>Set up in three moves</h2>
+  <p>Works with Claude Code and Codex on Windows, macOS and Linux. No account, nothing to type on the watch.</p>
+  <div class="steps">
+    <div class="step">
+      <i class="ph ph-terminal-window"></i>
+      <h3>Install on your computer</h3>
+      <p>Paste one line in a terminal. It adds Gauntlet to every agent it finds and starts it at login.</p>
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-os="win">Windows</button>
+        <button role="tab" aria-selected="false" data-os="unix">Mac / Linux</button>
+      </div>
+      <div class="cmd"><code id="cmd">irm https://raw.githubusercontent.com/NawafSheikh/gauntlet-plugin/main/install.ps1 | iex</code><button id="copy">Copy</button></div>
+    </div>
+    <div class="step">
+      <i class="ph ph-device-mobile"></i>
+      <h3>Open the app</h3>
+      <p>Open Gauntlet on your phone or watch, on the same Wi-Fi. It finds your computer by itself.</p>
+    </div>
+    <div class="step">
+      <i class="ph ph-check-circle"></i>
+      <h3>Click Allow</h3>
+      <p>Your computer opens a page with a six-digit code. If your phone shows the same code, click Allow. Done.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="watch"><div class="wrap annot">
+  <div class="watch" aria-label="Watch console with numbered callouts">
+    <img src="img/watch-console.png" alt="Watch console" width="432" height="432">
+    <span class="pin" style="left:50%;top:3%">1</span>
+    <span class="pin" style="left:7%;top:36%">2</span>
+    <span class="pin" style="left:50%;top:73%">3</span>
+    <span class="pin" style="left:25%;top:83%">4</span>
+    <span class="pin" style="left:50%;top:83%">5</span>
+    <span class="pin" style="left:76%;top:83%">6</span>
+    <span class="pin" style="left:94%;top:52%">7</span>
+  </div>
+  <div>
+    <h2>What every part of the watch does</h2>
+    <p>The console is the home screen of the watch app. Everything works by touch and the bezel; nothing fires from an accidental gesture.</p>
+    <div class="legend">
+      <div><b>1</b><div><h3>Status</h3><p>Connected or not, the time, and how many sessions are live.</p></div></div>
+      <div><b>2</b><div><h3>The session</h3><p>Its state and name. Tap the last line to read the conversation.</p></div></div>
+      <div><b>3</b><div><h3>Up, OK, Down</h3><p>Press keys in that session only, for menus and prompts.</p></div></div>
+      <div><b>4</b><div><h3>Talk</h3><p>Speak a prompt. It is typed into the session and sent.</p></div></div>
+      <div><b>5</b><div><h3>Switch</h3><p>Change session, skill, permission mode or model. Turn the bezel, tap to apply.</p></div></div>
+      <div><b>6</b><div><h3>Pause</h3><p>Ignore every gesture until you resume.</p></div></div>
+      <div><b>7</b><div><h3>The ring</h3><p>One segment per session. Turn the bezel to move between them.</p></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="cards"><div class="wrap">
+  <h2>Answering without guessing</h2>
+  <p>When a session needs you, the card says which session, what it wants in plain words, and what each button will do.</p>
+  <div class="cards">
+    <figure><img src="img/card-command-card.png" alt="A permission card asking to run a command, marked Careful because it deletes files" loading="lazy" width="510" height="1160"><figcaption>A risky command is marked Careful. Deny is always listed first; one pinch never approves.</figcaption></figure>
+    <figure><img src="img/card-blind-card.png" alt="A card for a permission prompt Gauntlet cannot see, offering Open and OK but no Allow" loading="lazy" width="510" height="1000"><figcaption>When Gauntlet cannot see what is being asked, it never offers Allow. Open the session instead.</figcaption></figure>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Always in view</h2>
+  <div class="bento">
+    <div class="tile face"><img src="img/watch-face.png" alt="The watch face with plan usage arcs, the time and an animated character" loading="lazy" width="1060" height="1060"><div class="copy"><h3>The watch face</h3><p>Plan usage for the next 5 hours and 7 days, the time, and a character that shows what your sessions are doing.</p></div></div>
+    <div class="tile paper"><img src="img/wallpaper-working.png" alt="Live wallpaper: a calm night sea with the character typing on a tiny laptop" loading="lazy" width="1080" height="2340"><div class="copy"><h3>Working</h3><p>The live wallpaper follows your sessions.</p></div></div>
+    <div class="tile paper"><img src="img/wallpaper-needs-you.png" alt="Live wallpaper: the lighthouse beam lands on the character, who waves" loading="lazy" width="1080" height="2340"><div class="copy"><h3>Needs you</h3><p>The lighthouse finds the character when a session waits.</p></div></div>
+  </div>
+</div></section>
+
+<section id="commands"><div class="wrap">
+  <h2>Ask your agent to set it up</h2>
+  <p>Gauntlet adds a few commands to Claude Code. Type them in any session.</p>
+  <div class="commands">
+    <div><code>/gauntlet:customise</code><p>Describe the look you want: a calmer wallpaper, a darker one, a see-through widget.</p></div>
+    <div><code>/gauntlet:train</code><p>Record a gesture on the watch, see how often it is caught, and tune it with Claude.</p></div>
+    <div><code>/gauntlet:pair</code><p>Approve a phone or watch by its code when this computer has no browser.</p></div>
+    <div><code>/gauntlet:statusline</code><p>Show plan usage in Claude Code and send it to the watch face and widget.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="privacy">
+    <i class="ph ph-lock-simple"></i>
+    <div><h2>Nothing leaves your devices</h2><p>Gauntlet has no servers and no account. Your phone and watch talk only to your own computers, encrypted, after you approve them on both screens. <a href="https://nawafsheikh.github.io/gauntlet-plugin/docs/privacy-policy.html">Privacy policy</a>.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2>Questions</h2>
+  <details><summary>Which agents work?</summary><p>Claude Code and Codex today, in any terminal on Windows, macOS and Linux. In Codex, trust the Gauntlet hooks once with /hooks.</p></details>
+  <details><summary>Does it work away from home?</summary><p>On the same Wi-Fi it needs nothing. Away from home, put your computer and phone on your own Tailscale network; Gauntlet finds the computer there too.</p></details>
+  <details><summary>Two people on one network?</summary><p>If the app sees more than one computer, it asks which one is yours and contacts nothing until you pick.</p></details>
+  <details><summary>Why does the watch not buzz for every session?</summary><p>It buzzes when a session needs you, and when the session you picked finishes. Other sessions update quietly.</p></details>
+  <details><summary>Is it an Anthropic product?</summary><p>No. Gauntlet is an independent project that works with Claude Code and Codex. The pixel character in these screenshots is a personal theme.</p></details>
+</div></section>
+
+<footer><div class="wrap"><p>Gauntlet. Made by Nawaf Sheikh. Plugin and installers: <a href="https://github.com/NawafSheikh/gauntlet-plugin">github.com/NawafSheikh/gauntlet-plugin</a>.</p></div></footer>
+
+<script>
+  const cmds = {
+    win: "irm https://raw.githubusercontent.com/NawafSheikh/gauntlet-plugin/main/install.ps1 | iex",
+    unix: "curl -fsSL https://raw.githubusercontent.com/NawafSheikh/gauntlet-plugin/main/install.sh | sh",
+  };
+  const code = document.getElementById("cmd");
+  document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+    code.textContent = cmds[b.dataset.os];
+  }));
+  if (/Mac|Linux/.test(navigator.platform) && !/Android/.test(navigator.userAgent)) document.querySelector('[data-os="unix"]').click();
+  const copy = document.getElementById("copy");
+  copy.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(code.textContent); copy.textContent = "Copied"; }
+    catch { copy.textContent = "Select and copy"; }
+    setTimeout(() => (copy.textContent = "Copy"), 1800);
+  });
+</script>
+</body>
+</html>
