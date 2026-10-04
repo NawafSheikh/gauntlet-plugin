@@ -18,10 +18,15 @@ controls the user can tap (next session, talk, OK, open).
 
 1. Read the format first: `${CLAUDE_PLUGIN_ROOT}/skills/gauntlet/skins.md`.
    Use only the fields, words and data keys it lists.
-2. Design for the user's request. Make it beautiful: a clear focal point,
-   a restrained palette, generous space, text that stays readable over the
-   background, and at least one live control (the session name with
-   `"tap": "next"`, and a talk button) unless they ask for none.
+2. Design for the user's request. **Start from the Star Sea**
+   (`"background": {"scene": "starsea"}`) and add light touches in the pixel
+   font, unless the user asks for a different world (a city, a photo, a
+   colour); flat shapes on a plain gradient look generic, so a fresh design
+   needs real atmosphere (layered gradients, particles, their picture).
+   Keep it beautiful: a clear focal point, a restrained palette, generous
+   space, readable text, and at least one live control (the session name
+   with `"tap": "next"`) unless they ask for none. Leave the top third and
+   the middle free: the user's own widgets sit there.
 3. Write it to a file in the current folder, for example `gauntlet-skin.json`.
 4. Apply it: `"${CLAUDE_PLUGIN_ROOT}/native/gauntlet" skin apply gauntlet-skin.json`.
    If it is refused, the message says what to fix; fix it and apply again.

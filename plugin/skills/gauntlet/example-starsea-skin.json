@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "name": "Star Sea, live",
+  "background": { "scene": "starsea" },
+  "layers": [
+    { "type": "text", "x": 0.5, "y": 0.30, "size": 0.12, "align": "center", "font": "pixel", "text": "{time.hhmm}", "color": "#f5f1eaee" },
+    { "type": "text", "x": 0.5, "y": 0.355, "size": 0.04, "align": "center", "font": "pixel", "text": "{session.name}",
+      "color": { "if": "session.working", "then": "#7dd3fc", "else": "#e2e8f0" }, "tap": "next" },
+    { "type": "text", "x": 0.5, "y": 0.385, "size": 0.03, "align": "center", "font": "pixel", "text": "{session.cli} {session.status} . 5h {usage.fiveHourText}", "color": "#94a3b8cc" }
+  ]
+}

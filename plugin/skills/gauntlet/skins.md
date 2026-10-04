@@ -34,6 +34,18 @@ session, and any layer can be a control (next session, talk, OK).
 }
 ```
 
+## Start from the Star Sea
+
+`"background": { "scene": "starsea" }` keeps the built-in animated Star Sea
+(sea, moon, lighthouse, Clawd and the Codex pod acting out your sessions)
+and draws the skin's layers over it. This is the best start for most
+requests: add a few light touches in the pixel font (`"font": "pixel"`)
+rather than rebuilding the scene. `"pixel": true` draws the skin's own
+layers at the scene's resolution so they match its pixel art (keep text in
+pixel mode large: it is drawn about five times smaller).
+
+## Positions
+
 Positions and sizes are fractions of the screen, so one skin fits every
 phone: `x` and `w` of its width, `y` and `h` of its height, and `r`,
 `size`, `radius`, `width` and `strokeWidth` of its width. `rect`, `image`,
