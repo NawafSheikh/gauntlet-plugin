@@ -127,7 +127,7 @@
         <a class="btn" href="https://github.com/NawafSheikh/gauntlet-plugin"><i class="ph ph-github-logo"></i>GitHub</a>
       </div>
     </div>
-    <div class="watch"><img src="img/watch-console.png" alt="The Gauntlet watch console showing a working Claude Code session with Up, OK, Down, Talk, Switch and Pause buttons" width="432" height="432"></div>
+    <div class="watch"><img src="img/watch-console.png" alt="The Gauntlet watch console showing a working session with Switch, Talk and OK buttons" width="432" height="432"></div>
   </header>
 </div>
 
@@ -162,24 +162,24 @@
   <div class="watch" aria-label="Watch console with numbered callouts">
     <img src="img/watch-console.png" alt="Watch console" width="432" height="432">
     <span class="pin" style="left:50%;top:3%">1</span>
-    <span class="pin" style="left:7%;top:36%">2</span>
-    <span class="pin" style="left:50%;top:73%">3</span>
-    <span class="pin" style="left:25%;top:83%">4</span>
-    <span class="pin" style="left:50%;top:83%">5</span>
-    <span class="pin" style="left:76%;top:83%">6</span>
-    <span class="pin" style="left:94%;top:52%">7</span>
+    <span class="pin" style="left:6%;top:23%">2</span>
+    <span class="pin" style="left:10%;top:37%">3</span>
+    <span class="pin" style="left:14%;top:49%">4</span>
+    <span class="pin" style="left:38%;top:44%">5</span>
+    <span class="pin" style="left:88%;top:49%">6</span>
+    <span class="pin" style="left:95%;top:30%">7</span>
   </div>
   <div>
     <h2>What every part of the watch does</h2>
     <p>The console is the home screen of the watch app. Everything works by touch and the bezel; nothing fires from an accidental gesture.</p>
     <div class="legend">
-      <div><b>1</b><div><h3>Status</h3><p>Connected or not, the time, and how many sessions are live.</p></div></div>
-      <div><b>2</b><div><h3>The session</h3><p>Its state and name. Tap the last line to read the conversation.</p></div></div>
-      <div><b>3</b><div><h3>Up, OK, Down</h3><p>Press keys in that session only, for menus and prompts.</p></div></div>
-      <div><b>4</b><div><h3>Talk</h3><p>Speak a prompt. It is typed into the session and sent.</p></div></div>
-      <div><b>5</b><div><h3>Switch</h3><p>Change session, skill, permission mode or model. Turn the bezel, tap to apply.</p></div></div>
-      <div><b>6</b><div><h3>Pause</h3><p>Ignore every gesture until you resume.</p></div></div>
-      <div><b>7</b><div><h3>The ring</h3><p>One segment per session. Turn the bezel to move between them.</p></div></div>
+      <div><b>1</b><div><h3>Status</h3><p>Ready or paused, the time, and how many sessions are live.</p></div></div>
+      <div><b>2</b><div><h3>The session</h3><p>Its name; the dot is its state (working, needs you, idle).</p></div></div>
+      <div><b>3</b><div><h3>Its last line</h3><p>Tap it to read the conversation.</p></div></div>
+      <div><b>4</b><div><h3>Switch</h3><p>Change session, permission mode, model or skill. Turn the bezel or tap the arrows, then Done.</p></div></div>
+      <div><b>5</b><div><h3>Talk</h3><p>Speak a prompt. It is typed into the session and sent.</p></div></div>
+      <div><b>6</b><div><h3>OK</h3><p>Presses Enter in that session for a prompt that popped up. Hold it for Up, Down, Esc and Pause.</p></div></div>
+      <div><b>7</b><div><h3>The ring</h3><p>One segment per session. Turn the bezel to move between them; a tap near the edge never does.</p></div></div>
     </div>
   </div>
 </div></section>
@@ -200,6 +200,12 @@
     <div class="tile paper"><img src="img/wallpaper-working.png" alt="Live wallpaper: a calm night sea with the character typing on a tiny laptop" loading="lazy" width="1080" height="2340"><div class="copy"><h3>Working</h3><p>The live wallpaper follows your sessions.</p></div></div>
     <div class="tile paper"><img src="img/wallpaper-needs-you.png" alt="Live wallpaper: the lighthouse beam lands on the character, who waves" loading="lazy" width="1080" height="2340"><div class="copy"><h3>Needs you</h3><p>The lighthouse finds the character when a session waits.</p></div></div>
   </div>
+</div></section>
+
+<section id="codex"><div class="wrap">
+  <h2>Claude Code and Codex, side by side</h2>
+  <p>Codex sessions show up next to Claude Code ones, named the way Codex names them. Codex gets its own character: a teal pod that takes over the watch face when Codex is the one working, and shares the stage with Clawd when both are busy. Talk, switch, OK and the transcript work the same for both. In Codex, run <code>/hooks</code> once and trust the Gauntlet hooks.</p>
+  <img src="img/codex-cast.png" alt="Pixel characters: Clawd typing, then the teal Codex pod typing, needing you and celebrating" loading="lazy" width="1160" height="240" style="width:100%;height:auto;image-rendering:pixelated;border-radius:16px">
 </div></section>
 
 <section id="commands"><div class="wrap">
