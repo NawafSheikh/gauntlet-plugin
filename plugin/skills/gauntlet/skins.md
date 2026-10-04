@@ -80,6 +80,14 @@ Conditions: `session.working`, `session.needsYou`, `session.idle`,
 `session.codex`, `any.working`, `any.needsYou`, `linked`, `music.playing`,
 `night` (local 19:00 to 06:00).
 
+## Widget
+
+A skin may also carry a home-screen widget: `"widget": { "background": ..., "layers": [...] }`,
+the same layers with positions as fractions of the widget. A widget is still
+(no `anim`, no `particles`: home screens redraw it rarely), has at most 24
+layers, and at most 8 of them respond to taps. The user adds it once from
+the home screen's widget list ("Gauntlet skin").
+
 ## Assets
 
 `image` layers name an asset: a picture the user picked on the phone, or
