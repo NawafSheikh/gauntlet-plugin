@@ -1,5 +1,5 @@
 {
-  "description": "Codex hooks for Gauntlet (Codex reads this file through .codex-plugin/plugin.json; Claude Code reads hooks.json). Each event is told to the local Gauntlet agent so the watch lists the Codex session, buzzes when a turn ends or asks for permission, and, while you are away from the PC with a watch connected, a permission waits up to 2 minutes for Allow or Deny from the watch and a finished turn waits up to 2 minutes for a reply from the watch, which Codex runs as the next prompt. Codex substitutes ${PLUGIN_ROOT} in the command; it runs through $SHELL -lc, or cmd.exe /C on Windows (commandWindows). Codex skips these until you trust them in /hooks, and again after they change.",
+  "description": "Codex hooks for Gauntlet (Codex reads this file through .codex-plugin/plugin.json; Claude Code reads hooks.json). Each event is told to the local Gauntlet agent so the watch lists the Codex session, buzzes when a turn ends or asks for permission, and, while you are away from the PC with a watch connected, a permission waits up to 2 minutes for Allow or Deny from the watch and a finished turn waits up to 2 minutes for a reply from the watch, which Codex runs as the next prompt. Codex substitutes ${PLUGIN_ROOT} in the command; it runs through $SHELL -lc, or cmd.exe /C on Windows (commandWindows). Codex escapes quotes as \\\" there, which cmd.exe reads literally, so commandWindows quotes nothing: cd /d takes a path with spaces as is. Codex skips these until you trust them in /hooks, and again after they change. Codex escapes quotes when it hands commandWindows to cmd.exe, which then reads them literally, so commandWindows quotes nothing: cd /d takes a path with spaces as it is. Codex escapes quotes when it hands commandWindows to cmd.exe, which then reads them literally, so commandWindows quotes nothing: cd /d takes a path with spaces as it is.",
   "hooks": {
     "SessionStart": [
       {
@@ -7,7 +7,7 @@
           {
             "type": "command",
             "command": "\"${PLUGIN_ROOT}/native/gauntlet\" hook codex",
-            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" hook codex",
+            "commandWindows": "cd /d ${PLUGIN_ROOT}\\native && gauntlet.exe hook codex",
             "async": true
           }
         ]
@@ -19,7 +19,7 @@
           {
             "type": "command",
             "command": "\"${PLUGIN_ROOT}/native/gauntlet\" hook codex",
-            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" hook codex",
+            "commandWindows": "cd /d ${PLUGIN_ROOT}\\native && gauntlet.exe hook codex",
             "async": true
           }
         ]
@@ -31,7 +31,7 @@
           {
             "type": "command",
             "command": "\"${PLUGIN_ROOT}/native/gauntlet\" permission codex",
-            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" permission codex",
+            "commandWindows": "cd /d ${PLUGIN_ROOT}\\native && gauntlet.exe permission codex",
             "timeout": 660
           }
         ]
@@ -43,7 +43,7 @@
           {
             "type": "command",
             "command": "\"${PLUGIN_ROOT}/native/gauntlet\" stop codex",
-            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" stop codex",
+            "commandWindows": "cd /d ${PLUGIN_ROOT}\\native && gauntlet.exe stop codex",
             "timeout": 180
           }
         ]
@@ -55,7 +55,7 @@
           {
             "type": "command",
             "command": "\"${PLUGIN_ROOT}/native/gauntlet\" hook codex",
-            "commandWindows": "\"${PLUGIN_ROOT}\\native\\gauntlet.exe\" hook codex",
+            "commandWindows": "cd /d ${PLUGIN_ROOT}\\native && gauntlet.exe hook codex",
             "timeout": 3
           }
         ]
