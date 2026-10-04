@@ -1,6 +1,6 @@
 {
   "name": "gauntlet",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Drive Codex from a Wear OS watch: your wrist buzzes when a turn ends or Codex asks for permission.",
   "keywords": [
     "wear-os",
