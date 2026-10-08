@@ -17,7 +17,10 @@ Codex characters, rain, snow, stars) bound to live session data, with
 controls the user can tap (next session, talk, OK, open).
 
 1. Read the format first: `${CLAUDE_PLUGIN_ROOT}/skills/gauntlet/skins.md`.
-   Use only the fields, words and data keys it lists.
+   Use only the fields, words and data keys it lists. Then read the design
+   rules in `${CLAUDE_PLUGIN_ROOT}/skills/taste/SKILL.md` and follow them:
+   give the one-line design read, set the dials, and score the rendered
+   picture in step 5.
 2. Design for the user's request. **Start from the Star Sea**
    (`"background": {"scene": "starsea"}`) and add light touches in the pixel
    font, unless the user asks for a different world (a city, a photo, a

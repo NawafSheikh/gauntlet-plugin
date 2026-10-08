@@ -1,6 +1,6 @@
 # Gauntlet privacy policy
 
-Last updated: 3 October 2026
+Last updated: 8 October 2026
 
 Gauntlet is a phone, watch and computer companion for AI coding agents
 (such as Claude Code and Codex). It is made by Nawaf Sheikh
@@ -24,6 +24,13 @@ over your own network, encrypted.
   of ours; there is none.
 - **Settings and the last known state** are stored on each device so the
   widget, wallpaper and watch face can show them while offline.
+
+## Purchases
+
+Gauntlet Pro is a one-time purchase made through Google Play. Google
+processes the payment under its own privacy policy. Gauntlet only asks
+Google Play whether Pro is unlocked on your account and remembers the
+answer on your phone; it never sees your payment details.
 
 ## Microphone and speech
 
